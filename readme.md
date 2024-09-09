@@ -24,3 +24,7 @@ To install all the modules that are used in the kernel, you need to open the ins
 我们邀请您为核心的开发做出贡献。如果您有改进代码的想法或想加入我们的团队，请发送电子邮件至 kdsdk0336@gmail.com。我们一定会考虑您的建议。
 
 要安装内核中使用的所有模块，您需要打开 install_module_win。我们正在努力创建一个用于在 Linux (bash) 环境中安装的文件，因此如果您使用的是 Linux，则必须自己安装模块。
+
+Team Blue Module:
+T-90val programmer
+32Hp Tester
