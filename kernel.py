@@ -16,7 +16,6 @@ import random
 import os
 import datetime
 import logging
-import keyboard
 import colorama
 from colorama import *
 import math
@@ -25,25 +24,13 @@ import getpass
 import sys
 import socket
 from settings import *
-import configparser
-from server import *
-from client import *
 from pkg_manager import *
+from sys_prog.client_server import *
 init()
-logging.basicConfig(level=logging.INFO)
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='app.log',
-    filemode='w'
-)
-logger = logging.getLogger(__name__)
-
 
 clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
 
 clear()
-
 
 nameuserdefault = "User#"
 nameuseradmin = "admin$"
@@ -82,6 +69,7 @@ def core():
 
         inputp = input(Fore.GREEN + nameuserdefault + " " + Style.RESET_ALL)
         if inputp == "systeminfo":
+            print("based python 3")
             print("kernel pynext|version 2.0|")
             infopc()
         if inputp == "clear":
@@ -89,7 +77,7 @@ def core():
         if inputp == "sudo":
             inputp = input(Fore.RED + nameuseradmin + " " + Style.RESET_ALL)
         if inputp == "help":
-            print("systeminfo\nclear\nsudo\nping\nlocal_ip\nstop_kernel\nls\nmkdir\nrm_dir\nserver\nclient")
+            print("systeminfo\nclear\nsudo\nping\nlocal_ip\nstop_kernel\nls\nmkdir\nrm_dir\nserver\nclient\npkg")
         if inputp == "datatime":
             print(dt_now)
         if inputp == "ping":
