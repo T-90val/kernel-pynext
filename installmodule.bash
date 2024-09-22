@@ -1,1 +1,1 @@
-pip install -r requirements.txt
+pip install wmi logging keyboard numpy colorama
