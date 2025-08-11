@@ -16,14 +16,15 @@ class bootloader:
 
     def load_kernel(self):
         if not os.path.exists(self.path_kernel):
-            print("kernel not found.")
+            print(Fore.RED + "kernel not found." + Style.RESET_ALL)
+            time.sleep(2)
             sys.exit(1)
-        print(f"loading kernel")
-        clear()
-        self.load_kernel()
-        self.display_logo()
-        self.wait()
-        core()
+        else:
+            print(f"loading kernel")
+            clear()
+            self.display_logo()
+            self.wait()
+            password_check()
 
 
 bootloader = bootloader()

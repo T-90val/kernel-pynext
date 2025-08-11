@@ -1,31 +1,17 @@
 #********************************************
 # by t90_val (github)                       *
-# v 2.0                                     *
+# v3.0                                      *
 # language: python 3 , bash                 *
 #********************************************
-# pip install wmi
-# pip install logging
-# pip install keyboard
-# pip install numpy
-# pip install colorama
-# pip install requests
-import wmi
-from os import *
+import wmi  
 import time
-import random
-import os
 import datetime
-import logging
-import colorama
 from colorama import *
-import math
-import requests
 import getpass
 import sys
-import socket
-from settings import *
-from pkg_manager import *
+from sys_prog.pkg_manager import *
 from sys_prog.client_server import *
+import shutil
 init()
 
 clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
@@ -36,7 +22,6 @@ nameuserdefault = "User#"
 nameuseradmin = "admin$"
 dt_now = datetime.datetime.now()
 imptyfs = getpass.getpass
-
 
 
 # получение информации  пк
@@ -61,6 +46,13 @@ def get_local_ip():
     print(local_ip)
     return local_ip
 
+def clear_cache():
+    current_directory = os.getcwd()
+    for item in os.listdir(current_directory):
+        if os.path.isdir(item) and item == '__pycache__':
+            shutil.rmtree(item)
+            print('cache has been deleted')
+
 
 # цикл команд
 # command cycle
@@ -70,40 +62,49 @@ def core():
         inputp = input(Fore.GREEN + nameuserdefault + " " + Style.RESET_ALL)
         if inputp == "systeminfo":
             print("based python 3")
-            print("kernel pynext|version 2.0|")
+            print("kernel pynext|version 3.0|")
             infopc()
-        if inputp == "clear":
+        elif inputp == "clear":
             clear()
-        if inputp == "sudo":
+        elif inputp == "sudo":
             inputp = input(Fore.RED + nameuseradmin + " " + Style.RESET_ALL)
-        if inputp == "help":
-            print("systeminfo\nclear\nsudo\nping\nlocal_ip\nstop_kernel\nls\nmkdir\nrm_dir\nserver\nclient\npkg")
-        if inputp == "datatime":
+        elif inputp == "help":
+            print("systeminfo\nclear\nsudo\nping\nlocal_ip\nstop_kernel\nls\nmkdir\nrm_dir\nserver\nclient\npkg\nclear_cache")
+        elif inputp == "datatime":
             print(dt_now)
-        if inputp == "ping":
+        elif inputp == "ping":
             inptehttp = input("(example https://google.com)ping_site>>> ")
             reshttp = requests.get(inptehttp)
             print(reshttp)
-        if inputp == "local_ip":
+        elif inputp == "local_ip":
             get_local_ip()
-        if inputp == "stop_kernel":
-            sys.exit()
-        if inputp == "ls":
+        elif inputp == "stop_kernel":
+            print(Fore.RED +"Warning: ARE YOU SURE?\nIf yes then write yes, if no then write no"+ Style.RESET_ALL)
+            stop_kernel_input = input(">>>")
+            if stop_kernel_input == "yes":
+                sys.exit()
+            elif stop_kernel_input == "no":
+                print()
+        elif inputp == "ls":
             print(os.getcwd())
-        if inputp == "dir":
+        elif inputp == "dir":
             print("error: maybe you mean ls?")
-        if inputp == "mkdir":
+        elif inputp == "mkdir":
             inpte = input("mkdir_name>>> ")
             os.mkdir(inpte)
-        if inputp == "rm_dir":
+        elif inputp == "rm_dir":
             inpter = input("rm_dir>>> ")
             os.rmdir(inpter)
-        if inputp == "server":
+        elif inputp == "server":
             start_server()
-        if inputp == "client":
+        elif inputp == "client":
             start_client()
-        if inputp == "pkg":
+        elif inputp == "pkg":
             pkg_files()
+        elif inputp ==  "clear_cache":
+            clear_cache()
+        else:
+            print(f'{Fore.RED} not found command {inputp} {Style.RESET_ALL}')
 
 def password_check():
     print("kernel pynext")

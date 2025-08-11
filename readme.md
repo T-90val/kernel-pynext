@@ -10,4 +10,3 @@ if on Linux/Mac OS then installmodule.bash
 
 Team Blue Module:\
 **T-90val programmer**\
-**32Hp Tester**
